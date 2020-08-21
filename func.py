@@ -5,7 +5,7 @@ import scipy.optimize
 import numpy as np
 import pandas as pd
 import sympy as sym
-from sympy.core.evaluate import evaluate
+from sympy.core.parameters import evaluate
 import math
 from cycler import cycler
 
