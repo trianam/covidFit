@@ -81,6 +81,12 @@ def plotCurve(keys, zones='Italia', funcName=None, plotError=True, derivative=0,
             
             elif normalize == 'swabs':
                 y = y / np.array(data['tamponi'], dtype=float) * 100.
+                
+            elif normalize == 'total cases':
+                yTC = data['totale_casi']
+                for _ in range(derivative):
+                    yTC = np.array([yTC[i]-yTC[i-1] for i in range(1,len(yTC))])
+                y = y / np.array(yTC, dtype=float) * 100.
             
             if derivative > 0:
                 plotLabel = "{} - {}\n(derivative {})".format(labels[key], zone, derivative)
