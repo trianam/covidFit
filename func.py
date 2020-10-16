@@ -9,7 +9,9 @@ from sympy.core.parameters import evaluate
 import math
 from cycler import cycler
 
+plt.rcParams['figure.autolayout'] = False
 plt.rcParams['figure.dpi'] = 100
+plt.rcParams['figure.figsize'] = [30., 20.]
 plt.rc('axes', prop_cycle=(cycler('color', ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan', 'tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan', 'tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan']) +
                            cycler('linestyle', ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '--', '--', '--', '--', '--', '--', '--', '--', '--', '--', ':', ':', ':', ':', ':', ':', ':', ':', ':', ':'])))
 
@@ -55,7 +57,8 @@ def getRegions():
 
 def plotCurve(keys, zones='Italia', funcName=None, plotError=True, derivative=0, normalize=None, forecastDays=20):
     #normalize: None, 'population', 'swabs'
-    ax = plt.axes()
+    #ax = plt.axes()
+    fig,ax = plt.subplots()
     
     if not type(keys) is list:
         keys = [keys]
