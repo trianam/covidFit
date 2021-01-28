@@ -83,7 +83,9 @@ def plotCurve(keys, zones='Italia', funcName=None, plotError=True, derivative=0,
                 y = y / float(dataPop[dataPop.Territorio == zone].Value) * 100.
             
             elif normalize == 'swabs':
-                y = y / np.array(data['tamponi'], dtype=float) * 100.
+                swabs = np.array(data['tamponi'], dtype=float)
+                y = np.array([ y[i]/swabs[i]*100. if y[i] != 0 and swabs[i] != 0 else 0. for i in range(len(y)) ])
+                #y = y / np.array(data['tamponi'], dtype=float) * 100.
                 
             elif normalize == 'total cases':
                 yTC = data['totale_casi']
